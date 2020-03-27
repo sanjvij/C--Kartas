@@ -14,14 +14,19 @@ namespace FizzBuzzRunner
 
             foreach (var item in names)
             {
-                if (string.IsNullOrWhiteSpace(output))
+                if (int.TryParse(item, out int result))
                 {
-                    output += item;
+                    if (string.IsNullOrWhiteSpace(output))
+                    {
+                        output += result;
+                    }
+                    else
+                    {
+                        output += "," + result;
+                    }
+
                 }
-                else
-                {
-                    output += "," + item;
-                }
+
             }
 
             return output;

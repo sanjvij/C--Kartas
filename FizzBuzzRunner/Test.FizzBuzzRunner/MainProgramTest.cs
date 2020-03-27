@@ -30,18 +30,21 @@ namespace Test.FizzBuzzRunner
             Console.WriteLine(actual);
             Assert.AreEqual(expected, actual);
         }
+              
+
 
         [Test]
-        public void AcceptNumbersStringsCommaSepratedTest()
+        public void AcceptNumbersCommaSepratedStringsIgnoredTest()
         {
             FizzBuzz engine = new FizzBuzz();
 
             var input = "1,2,test,4";
-            var expected = "1,2,test,4";
+            var expected = "1,2,4";
             var actual = engine.RunFizzBuzz(input);
             Console.WriteLine(actual);
             Assert.AreEqual(expected, actual);
         }
+
 
     }
 }
