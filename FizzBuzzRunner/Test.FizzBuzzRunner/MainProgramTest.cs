@@ -12,19 +12,14 @@ namespace Test.FizzBuzzRunner
         {
         }
 
-        [Test]
-        public void Test1()
-        {
-            Assert.Pass();
-        }
 
 
         [Test]
         public void AcceptNumbersCommaSepratedTest()
         {
-            var input = "1,2,3,4";
-            var expected = "1,2,3,4";
-            var actual = FizzBuzz.RunFizzBuzz(input);
+            string input = "1,2,3,4";
+            string expected = "1,2,fizz,4";
+            string actual = FizzBuzz.RunFizzBuzz(input);
             Console.WriteLine(actual);
             Assert.AreEqual(expected, actual);
         }
@@ -34,9 +29,9 @@ namespace Test.FizzBuzzRunner
         [Test]
         public void AcceptNumbersCommaSepratedStringsIgnoredTest()
         {
-            var input = "1,2,test,4";
-            var expected = "1,2,4";
-            var actual = FizzBuzz.RunFizzBuzz(input);
+            string input = "1,2,test,4";
+            string expected = "1,2,4";
+            string actual = FizzBuzz.RunFizzBuzz(input);
             Console.WriteLine(actual);
             Assert.AreEqual(expected, actual);
         }
@@ -44,9 +39,20 @@ namespace Test.FizzBuzzRunner
         [Test]
         public void ReplaceDivisibleBy3withFizz()
         {
-            var input = "1,2,3,4";
-            var expected = "1,2,fizz,4";
-            var actual = FizzBuzz.RunFizzBuzz(input);
+            string input = "1,2,3,4";
+            string expected = "1,2,fizz,4";
+            string actual = FizzBuzz.RunFizzBuzz(input);
+            Console.WriteLine(actual);
+            Assert.AreEqual(expected, actual);
+        }
+
+
+        [Test]
+        public void ReplaceDivisibleBy5withBuzz()
+        {
+            string input = "1,2,3,4,5";
+            string expected = "1,2,fizz,4,buzz";
+            string actual = FizzBuzz.RunFizzBuzz(input);
             Console.WriteLine(actual);
             Assert.AreEqual(expected, actual);
         }

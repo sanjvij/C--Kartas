@@ -16,7 +16,7 @@ namespace FizzBuzzRunner
             {
                 if (int.TryParse(item, out int result))
                 {
-                    string magicWord = result % 3 == 0 ? "fizz" : result.ToString();
+                    string magicWord = result % 3 == 0 ? "fizz" : result % 5 == 0 ?"buzz":result.ToString();
 
                     if (string.IsNullOrWhiteSpace(output))
                     {
