@@ -4,10 +4,10 @@ using System.Text;
 
 namespace FizzBuzzRunner
 {
-    public class FizzBuzz
+    public static class FizzBuzz
     {
 
-        public string RunFizzBuzz(string input)
+        public static string RunFizzBuzz(string input)
         {
             string[] names = input.Split(',');
             string output = string.Empty;
@@ -16,13 +16,15 @@ namespace FizzBuzzRunner
             {
                 if (int.TryParse(item, out int result))
                 {
+                    string magicWord = result % 3 == 0 ? "fizz" : result.ToString();
+
                     if (string.IsNullOrWhiteSpace(output))
                     {
-                        output += result;
+                        output += magicWord;
                     }
                     else
                     {
-                        output += "," + result;
+                        output += "," + magicWord;
                     }
 
                 }

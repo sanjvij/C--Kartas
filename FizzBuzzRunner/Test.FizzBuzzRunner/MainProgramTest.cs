@@ -22,25 +22,31 @@ namespace Test.FizzBuzzRunner
         [Test]
         public void AcceptNumbersCommaSepratedTest()
         {
-            FizzBuzz engine = new FizzBuzz();
-
             var input = "1,2,3,4";
             var expected = "1,2,3,4";
-            var actual = engine.RunFizzBuzz(input);
+            var actual = FizzBuzz.RunFizzBuzz(input);
             Console.WriteLine(actual);
             Assert.AreEqual(expected, actual);
         }
-              
+
 
 
         [Test]
         public void AcceptNumbersCommaSepratedStringsIgnoredTest()
         {
-            FizzBuzz engine = new FizzBuzz();
-
             var input = "1,2,test,4";
             var expected = "1,2,4";
-            var actual = engine.RunFizzBuzz(input);
+            var actual = FizzBuzz.RunFizzBuzz(input);
+            Console.WriteLine(actual);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void ReplaceDivisibleBy3withFizz()
+        {
+            var input = "1,2,3,4";
+            var expected = "1,2,fizz,4";
+            var actual = FizzBuzz.RunFizzBuzz(input);
             Console.WriteLine(actual);
             Assert.AreEqual(expected, actual);
         }
