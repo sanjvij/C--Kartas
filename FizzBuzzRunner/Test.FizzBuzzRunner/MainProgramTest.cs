@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿using FizzBuzzRunner;
+using NUnit.Framework;
+using System;
+
 
 namespace Test.FizzBuzzRunner
 {
@@ -14,5 +17,31 @@ namespace Test.FizzBuzzRunner
         {
             Assert.Pass();
         }
+
+
+        [Test]
+        public void AcceptNumbersCommaSepratedTest()
+        {
+            FizzBuzz engine = new FizzBuzz();
+
+            var input = "1,2,3,4";
+            var expected = "1,2,3,4";
+            var actual = engine.RunFizzBuzz(input);
+            Console.WriteLine(actual);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void AcceptNumbersStringsCommaSepratedTest()
+        {
+            FizzBuzz engine = new FizzBuzz();
+
+            var input = "1,2,test,4";
+            var expected = "1,2,test,4";
+            var actual = engine.RunFizzBuzz(input);
+            Console.WriteLine(actual);
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 }
