@@ -53,8 +53,8 @@ Given the score is 30:30 When the server wins a point Then the score is 40:30
 
 Requirement 2 :- Deuce and Advantage are Scored Correctly
 Given the score is 40:40 When the receiver wins a point Then the score should be 40:A
-
 Given the score is A:40 When the receiver wins a point Then the score should be 40:40
+
 Requirement 3 :- Winning Points are Scored Correctly
 Given the score is 40:30 When the server wins a point Then the server should win
 Given the score is 40:A When the receiver wins a point Then the receiver should win
