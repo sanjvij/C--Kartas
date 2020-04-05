@@ -81,6 +81,13 @@ A Spare gives you one bonus ball
 A strike gives you two bonus balls
 Option to get current score to the user  
 
+Requirement 3
+Get Scores by Frame
+Bonus balls add score to the respective frame total 
+
+
+
+
 Score of the frame is the total number of pins knocked down, plus bonuses for strikes and spares
 
 

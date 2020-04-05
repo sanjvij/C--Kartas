@@ -6,9 +6,14 @@ namespace BowlingKata
 {
     public class BowlingKataGame
     {
+
+        public Frame[] Frames { get; private set; } = new Frame[10];
+
         public int ActiveFrameNumber { get; private set; } = 1;
 
-        public int PinsDown { get; private set; } = 0;
+        public int ActiveGameScore { get; private set; } = 0;
+
+        public int ActiveFrameScore { get; private set; } = 0;
 
         public int Attempts { get; private set; } = 0;
 
@@ -17,9 +22,12 @@ namespace BowlingKata
         public void RollBal(int pinsDown)
         {
             Attempts++;
-            PinsDown += pinsDown;
+            ActiveFrameScore += pinsDown;
+            ActiveGameScore += pinsDown;
 
-            if (PinsDown == 10)
+            AdjustAllFrames(pinsDown);
+
+            if (ActiveFrameScore == 10)
             {
                 if (Attempts == 2)
                     BonusBalls++;
@@ -27,13 +35,35 @@ namespace BowlingKata
                     BonusBalls += 2;
             }
 
-            if (PinsDown == 10 || Attempts == 2)
+
+
+
+            if (ActiveFrameScore == 10 || Attempts == 2)
             {
+                Frames[ActiveFrameNumber - 1] = new Frame(BonusBalls)
+                {
+                    Score = ActiveGameScore
+                };
+
+                ActiveFrameScore = 0;
                 ActiveFrameNumber++;
                 Attempts = 0;
+                BonusBalls = 0;
             }
         }
 
+
+        private void AdjustAllFrames(int adjustedPins)
+        {
+            for (int i = 0; i < Frames.Length; i++)
+            {
+                if (Frames[i] != null && Frames[i].BonusBalls > 0)
+                {
+                    Frames[i].AdjustFrameScore(adjustedPins);
+                    ActiveGameScore += adjustedPins;
+                }
+            }
+        }
 
 
         public int GetActiveFrameNumber()
@@ -43,12 +73,24 @@ namespace BowlingKata
 
         public int GetRemainingBonusBalls()
         {
-            return BonusBalls;
+            int retValue = 0;
+            for (int i = 0; i < Frames.Length; i++)
+            {
+                if (Frames[i] != null)
+                    retValue += Frames[i].BonusBalls;
+            }
+
+            return retValue;
         }
 
         public int GetScores()
         {
-            return PinsDown;
+            return ActiveGameScore;
+        }
+
+        public int GetScorebyFrame(int frameNumber)
+        {
+            return Frames[frameNumber - 1].Score;
         }
     }
 }

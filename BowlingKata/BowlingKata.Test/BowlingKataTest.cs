@@ -75,7 +75,7 @@ namespace BowlingKata.Test
 
             int actualBonusBalls = game.GetRemainingBonusBalls();
             int expectedBonusBalls = 1;
-            Console.WriteLine("Actual Frame"+actualFrameNumber);
+            Console.WriteLine("Actual Frame" + actualFrameNumber);
             Console.WriteLine("Actual BonusBalls" + actualBonusBalls);
             Assert.AreEqual(expectedFrameNumber, actualFrameNumber);
             Assert.AreEqual(expectedBonusBalls, actualBonusBalls);
@@ -90,7 +90,7 @@ namespace BowlingKata.Test
         {
             BowlingKataGame game = new BowlingKataGame();
             game.RollBal(10);
-         
+
             int actualFrameNumber = game.GetActiveFrameNumber();
             int expectedFrameNumber = 2;
 
@@ -118,7 +118,7 @@ namespace BowlingKata.Test
             Console.WriteLine("Actual BonusBalls" + actualBonusBalls);
             Assert.AreEqual(expectedFrameNumber, actualFrameNumber);
             Assert.AreEqual(expectedBonusBalls, actualBonusBalls);
-            int actualScore= game.GetScores();
+            int actualScore = game.GetScores();
             int expectedScore = 10;
 
             Assert.AreEqual(expectedScore, actualScore);
@@ -146,6 +146,65 @@ namespace BowlingKata.Test
             int expectedScore = 10;
 
             Assert.AreEqual(expectedScore, actualScore);
+        }
+
+
+
+        [Test]
+        public void GetFrameScoreScenario1()
+        {
+            BowlingKataGame game = new BowlingKataGame();
+
+            game.RollBal(6);
+            game.RollBal(4);
+
+            Assert.AreEqual(10, game.GetScorebyFrame(1));
+
+            game.RollBal(7);
+            Assert.AreEqual(17, game.GetScorebyFrame(1));
+            game.RollBal(1);
+            Assert.AreEqual(17, game.GetScorebyFrame(1));
+            Assert.AreEqual(25, game.GetScorebyFrame(2));
+        }
+
+
+
+        [Test]
+        public void GetFrameScoreScenario2BonusPointsAddedtoCorrectFrame()
+        {
+            BowlingKataGame game = new BowlingKataGame();
+
+            game.RollBal(10);
+            game.RollBal(4);
+            game.RollBal(6);
+            Assert.AreEqual(30, game.GetScores());
+
+        }
+
+
+        [Test]
+        public void GetFrameScoreScenario3()
+        {
+            BowlingKataGame game = new BowlingKataGame();
+
+            game.RollBal(10);
+            game.RollBal(10);
+            game.RollBal(10);
+            game.RollBal(10);
+            game.RollBal(10);
+            game.RollBal(10);
+            game.RollBal(10);
+            game.RollBal(10);
+            game.RollBal(10);
+            game.RollBal(10);
+
+            int score = game.GetScores();
+
+            int bonusBalls = game.GetRemainingBonusBalls();
+            int activeFrameNumber = game.GetActiveFrameNumber();
+
+           // Assert.AreEqual(30, game.GetScores());
+
         }
 
 
