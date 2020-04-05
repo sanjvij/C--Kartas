@@ -71,8 +71,16 @@ A strike is when the player knocks down all 10 pins on his first try. The bonus 
 
 In the tenth frame, a player who rolls a spare or strike is allowed to roll the extra balls to complete the frame. However no more than three balls can be rolled in the tenth frame.
 
-Requirements 
-In each frame, the player has two opportunities to knock down 10 pins
+Requirement 1
+In each frame, the player has maximum of two opportunities (roll balls) to knock down 10 pins
+If the first roll of ball knocks down all pins, then you start next frame
+If the two roll balls down't kncoks down all pins, then next frame is started 
+
+Requirement 2
+A Spare gives you one bonus ball 
+A strike gives you two bonus balls
+Option to get current score to the user  
+
 Score of the frame is the total number of pins knocked down, plus bonuses for strikes and spares
 
 

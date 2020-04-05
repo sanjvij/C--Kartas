@@ -61,5 +61,95 @@ namespace BowlingKata.Test
             Assert.AreEqual(expected, actual);
         }
 
+        /// <summary>
+        /// A Spare gives you one bonus ball 
+        /// </summary>
+        [Test]
+        public void SpareGivesYouABonusBallRoll()
+        {
+            BowlingKataGame game = new BowlingKataGame();
+            game.RollBal(4);
+            game.RollBal(6);
+            int actualFrameNumber = game.GetActiveFrameNumber();
+            int expectedFrameNumber = 2;
+
+            int actualBonusBalls = game.GetRemainingBonusBalls();
+            int expectedBonusBalls = 1;
+            Console.WriteLine("Actual Frame"+actualFrameNumber);
+            Console.WriteLine("Actual BonusBalls" + actualBonusBalls);
+            Assert.AreEqual(expectedFrameNumber, actualFrameNumber);
+            Assert.AreEqual(expectedBonusBalls, actualBonusBalls);
+
+        }
+
+        /// <summary>
+        /// If you hit a strike then you get two bonus balls
+        /// </summary>
+        [Test]
+        public void StrikeGivesYouTwoBonusBalls()
+        {
+            BowlingKataGame game = new BowlingKataGame();
+            game.RollBal(10);
+         
+            int actualFrameNumber = game.GetActiveFrameNumber();
+            int expectedFrameNumber = 2;
+
+            int actualBonusBalls = game.GetRemainingBonusBalls();
+            int expectedBonusBalls = 2;
+            Console.WriteLine("Actual Frame" + actualFrameNumber);
+            Console.WriteLine("Actual BonusBalls" + actualBonusBalls);
+            Assert.AreEqual(expectedFrameNumber, actualFrameNumber);
+            Assert.AreEqual(expectedBonusBalls, actualBonusBalls);
+        }
+
+
+        [Test]
+        public void GetScorseWhenAStrike()
+        {
+            BowlingKataGame game = new BowlingKataGame();
+            game.RollBal(10);
+
+            int actualFrameNumber = game.GetActiveFrameNumber();
+            int expectedFrameNumber = 2;
+
+            int actualBonusBalls = game.GetRemainingBonusBalls();
+            int expectedBonusBalls = 2;
+            Console.WriteLine("Actual Frame" + actualFrameNumber);
+            Console.WriteLine("Actual BonusBalls" + actualBonusBalls);
+            Assert.AreEqual(expectedFrameNumber, actualFrameNumber);
+            Assert.AreEqual(expectedBonusBalls, actualBonusBalls);
+            int actualScore= game.GetScores();
+            int expectedScore = 10;
+
+            Assert.AreEqual(expectedScore, actualScore);
+
+        }
+
+
+        [Test]
+        public void GetScoresWhenASpare()
+        {
+            BowlingKataGame game = new BowlingKataGame();
+            game.RollBal(8);
+            game.RollBal(2);
+
+            int actualFrameNumber = game.GetActiveFrameNumber();
+            int expectedFrameNumber = 2;
+
+            int actualBonusBalls = game.GetRemainingBonusBalls();
+            int expectedBonusBalls = 1;
+            Console.WriteLine("Actual Frame" + actualFrameNumber);
+            Console.WriteLine("Actual BonusBalls" + actualBonusBalls);
+            Assert.AreEqual(expectedFrameNumber, actualFrameNumber);
+            Assert.AreEqual(expectedBonusBalls, actualBonusBalls);
+            int actualScore = game.GetScores();
+            int expectedScore = 10;
+
+            Assert.AreEqual(expectedScore, actualScore);
+        }
+
+
+
+
     }
 }
