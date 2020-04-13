@@ -21,7 +21,7 @@ namespace GreedKata
             { DiceValue.Two, 0 },
             { DiceValue.Three, 0 },
             { DiceValue.Four, 0 },
-            { DiceValue.Five, 0 },
+            { DiceValue.Five, 50 },
             { DiceValue.Six , 0 },
         };
 
