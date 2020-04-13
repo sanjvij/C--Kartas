@@ -43,7 +43,7 @@ namespace Tests
         [Test]
         public void NoSingleScenarioMetScoresZero()
         {
-            int actual = greed.RollDice(DiceValue.Three, DiceValue.Two, DiceValue.Three, DiceValue.Four, DiceValue.Three, DiceValue.Six);
+            int actual = greed.RollDice(DiceValue.Two, DiceValue.Two, DiceValue.Three, DiceValue.Four, DiceValue.Three, DiceValue.Six);
             int expected = 0;
             Console.WriteLine($"Expected : {expected}  Actual : {actual}");
             Assert.AreEqual(expected, actual);
@@ -142,6 +142,39 @@ namespace Tests
             Console.WriteLine($"Expected : {expected}  Actual : {actual}");
             Assert.AreEqual(expected, actual);
         }
+
+
+
+        [Test]
+        public void TripleThree300PointsScenario1()
+        {
+            int actual = greed.RollDice(DiceValue.Three, DiceValue.Three, DiceValue.Three, DiceValue.Four, DiceValue.Three, DiceValue.Six);
+            int expected = 300;
+            Console.WriteLine($"Expected : {expected}  Actual : {actual}");
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void TripleThree300PointsScenario2()
+        {
+            int actual = greed.RollDice(DiceValue.Three, DiceValue.Three, DiceValue.Three, DiceValue.Three, DiceValue.Three, DiceValue.Three);
+            int expected = 600;
+            Console.WriteLine($"Expected : {expected}  Actual : {actual}");
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void TripleThree300PointsScenario3()
+        {
+            int actual = greed.RollDice(DiceValue.Three, DiceValue.Three, DiceValue.Three, DiceValue.Four, DiceValue.One, DiceValue.Five);
+            int expected = 450;
+            Console.WriteLine($"Expected : {expected}  Actual : {actual}");
+            Assert.AreEqual(expected, actual);
+        }
+
+
+
+
 
 
     }
