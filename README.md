@@ -58,3 +58,39 @@ Given the score is A:40 When the receiver wins a point Then the score should be 
 Requirement 3 :- Winning Points are Scored Correctly
 Given the score is 40:30 When the server wins a point Then the server should win
 Given the score is 40:A When the receiver wins a point Then the receiver should win
+
+=========================================================================================
+************************Bowling Kata************************
+
+
+The game consists of 10 frames. In each frame, the player has two opportunities to knock down 10 pins. The score for the frame is the total number of pins knocked down, plus bonuses for strikes and spares.
+
+A spare is when the player knocks down all 10 pins in two tries. The bonus for that frame is the number of pins knocked down by the next roll in next frame. So, in frame 3 , the score is 10 (the total number knocked down) plus a bonus of 5 (the number of pins knocked down on the next roll in next frame.)
+
+A strike is when the player knocks down all 10 pins on his first try. The bonus for that frame is the value of the next two balls rolled.
+
+In the tenth frame, a player who rolls a spare or strike is allowed to roll the extra balls to complete the frame. However no more than three balls can be rolled in the tenth frame.
+
+Requirement 1
+In each frame, the player has maximum of two opportunities (roll balls) to knock down 10 pins
+If the first roll of ball knocks down all pins, then you start next frame
+If the two roll balls down't kncoks down all pins, then next frame is started 
+
+Requirement 2
+A Spare gives you one bonus ball 
+A strike gives you two bonus balls
+Option to get current score to the user  
+
+Requirement 3
+Get Scores by Frame
+Bonus balls add score to the respective frame total 
+
+Requirement 4
+if the 10th Frame is a strike, then allow two more roll of balls 
+If the 10th Frame is a spare, then allow one more ball
+Balls after 10 frames are ignored
+Score of the frame is the total number of pins knocked down, plus bonuses for strikes and spares
+
+
+
+
