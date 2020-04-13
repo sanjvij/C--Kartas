@@ -164,7 +164,7 @@ namespace BowlingKata.Test
             Assert.AreEqual(17, game.GetScorebyFrame(1));
             game.RollBall(1);
             Assert.AreEqual(17, game.GetScorebyFrame(1));
-            Assert.AreEqual(25, game.GetScorebyFrame(2));
+            Assert.AreEqual(8, game.GetScorebyFrame(2));
         }
 
 
