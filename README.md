@@ -91,6 +91,25 @@ If the 10th Frame is a spare, then allow one more ball
 Balls after 10 frames are ignored
 Score of the frame is the total number of pins knocked down, plus bonuses for strikes and spares
 
+=========================================================================================
+************************Greed Kata************************
+
+Greed is a press-your-luck dice rolling game. In the game, the player rolls the dice and tries to earn as many points as possible from the result. For the purposes of this kata, we will just be scoring a single roll of five dice
+
+Write a scoring method that calculates the best score based on a given roll using the following set of scoring rules. Each die can only be scored once (so single die scores cannot be combined with triple die scores for the same individual die, but for instance four 5s could count as 1 Triple (500) and 1 Single (50) for a total of 550.
+
+A single one (100 points)
+A single five (50 points)
+Triple ones [1,1,1] (1000 points)
+Triple twos [2,2,2] (200 points)
+Triple threes [3,3,3] (300 points)
+Triple fours [4,4,4] (400 points)
+Triple fives [5,5,5] (500 points)
+Triple sixes [6,6,6] (600 points)
+
+TDD aproach :- Start with each of the scoring option and work your way down. in other words right test for Single ones first , then single fives, Triple ones and so on. As we complete each of the scoring option we can update code accordingly. 
+
+
 
 
 
