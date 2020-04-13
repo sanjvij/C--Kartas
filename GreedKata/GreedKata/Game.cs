@@ -65,6 +65,10 @@ namespace GreedKata
                     score = 800;
                     inputAsStringPattern = "";
                     break;
+                case "555555":
+                    score = 1000;
+                    inputAsStringPattern = "";
+                    break;
                 default:
                     if (inputAsStringPattern.Contains("111"))
                     {
@@ -85,6 +89,11 @@ namespace GreedKata
                     {
                         score += 400;
                         inputAsStringPattern = inputAsStringPattern.Replace("444", "0");
+                    }
+                    if (inputAsStringPattern.Contains("555"))
+                    {
+                        score += 500;
+                        inputAsStringPattern = inputAsStringPattern.Replace("555", "0");
                     }
                     break;
             }

@@ -201,6 +201,35 @@ namespace Tests
         }
 
 
+        [Test]
+        public void TripleFive500PointsScenario1()
+        {
+            int actual = greed.RollDice(DiceValue.Five, DiceValue.Five, DiceValue.Five, DiceValue.Four, DiceValue.Three, DiceValue.Six);
+            int expected = 500;
+            Console.WriteLine($"Expected : {expected}  Actual : {actual}");
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void TripleFive500PointsScenario2()
+        {
+            int actual = greed.RollDice(DiceValue.Five, DiceValue.Five, DiceValue.Five, DiceValue.Five, DiceValue.Five, DiceValue.Five);
+            int expected = 1000;
+            Console.WriteLine($"Expected : {expected}  Actual : {actual}");
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void TripleFive500PointsScenario3()
+        {
+            int actual = greed.RollDice(DiceValue.Five, DiceValue.Five, DiceValue.Five, DiceValue.Four, DiceValue.One, DiceValue.Five);
+            int expected = 650;
+            Console.WriteLine($"Expected : {expected}  Actual : {actual}");
+            Assert.AreEqual(expected, actual);
+        }
+
+
+
 
 
 
