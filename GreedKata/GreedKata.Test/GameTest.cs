@@ -35,7 +35,7 @@ namespace Tests
         public void SingleOne100PointsScenario2()
         {
             int actual = greed.RollDice(DiceValue.One, DiceValue.Two, DiceValue.One, DiceValue.Four, DiceValue.One, DiceValue.Six);
-            int expected = 300;
+            int expected = 1000;
             Console.WriteLine($"Expected : {expected}  Actual : {actual}");
             Assert.AreEqual(expected, actual);
         }
@@ -65,6 +65,43 @@ namespace Tests
         {
             int actual = greed.RollDice(DiceValue.Five, DiceValue.Five, DiceValue.Three, DiceValue.Four, DiceValue.Three, DiceValue.Six);
             int expected = 100;
+            Console.WriteLine($"Expected : {expected}  Actual : {actual}");
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void TripleOne1000PointsScenario1()
+        {
+            int actual = greed.RollDice(DiceValue.One, DiceValue.One, DiceValue.One, DiceValue.Four, DiceValue.Three, DiceValue.Six);
+            int expected = 1000;
+            Console.WriteLine($"Expected : {expected}  Actual : {actual}");
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void TripleOne1000PointsScenario2()
+        {
+            int actual = greed.RollDice(DiceValue.One, DiceValue.One, DiceValue.One, DiceValue.One, DiceValue.Three, DiceValue.Six);
+            int expected = 1100;
+            Console.WriteLine($"Expected : {expected}  Actual : {actual}");
+            Assert.AreEqual(expected, actual);
+        }
+
+
+        [Test]
+        public void TripleOne1000PointsScenario3()
+        {
+            int actual = greed.RollDice(DiceValue.One, DiceValue.One, DiceValue.One, DiceValue.One, DiceValue.One, DiceValue.One);
+            int expected = 2000;
+            Console.WriteLine($"Expected : {expected}  Actual : {actual}");
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void TripleOne1000PointsScenario4()
+        {
+            int actual = greed.RollDice(DiceValue.One, DiceValue.One, DiceValue.One, DiceValue.One, DiceValue.Three, DiceValue.Five);
+            int expected = 1150;
             Console.WriteLine($"Expected : {expected}  Actual : {actual}");
             Assert.AreEqual(expected, actual);
         }
