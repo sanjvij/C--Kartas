@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace BowlingKata
@@ -19,44 +20,74 @@ namespace BowlingKata
 
         public int BonusBalls { get; private set; } = 0;
 
-        public void RollBal(int pinsDown)
+        public void RollBall(int numberOfPinsKnocked)
         {
-            Attempts++;
-            ActiveFrameScore += pinsDown;
-            ActiveGameScore += pinsDown;
-
-            AdjustAllFrames(pinsDown);
-
-            if (ActiveFrameScore == 10)
+            try
             {
-                if (Attempts == 2)
-                    BonusBalls++;
-                else
-                    BonusBalls += 2;
-            }
-
-
-
-
-            if (ActiveFrameScore == 10 || Attempts == 2)
-            {
-                Frames[ActiveFrameNumber - 1] = new Frame(BonusBalls)
+                if (ActiveFrameNumber == 10 && Attempts > 2 || ActiveFrameNumber > 10)
                 {
-                    Score = ActiveGameScore
-                };
+                    return;
+                }
+                Attempts++;
+                ActiveFrameScore += numberOfPinsKnocked;
+                ActiveGameScore += numberOfPinsKnocked;
 
-                ActiveFrameScore = 0;
-                ActiveFrameNumber++;
-                Attempts = 0;
-                BonusBalls = 0;
+                AdjustAllFrames(numberOfPinsKnocked);
+
+                if (ActiveFrameNumber < 10)
+                {
+                    if (ActiveFrameScore == 10)
+                    {
+                        if (Attempts == 2)
+                            BonusBalls++;
+                        else
+                            BonusBalls += 2;
+                    }
+                    if (ActiveFrameScore == 10 || Attempts == 2)
+                    {
+                        AdjustFrameScore();
+                    }
+                }
+                else
+                {
+                    if (Frames[ActiveFrameNumber - 1] == null)
+                    {
+                        Frames[ActiveFrameNumber - 1] = new Frame(BonusBalls)
+                        {
+                            Score = ActiveFrameScore
+                        };
+                    }
+                    else
+                    {
+                        Frames[ActiveFrameNumber - 1].Score = ActiveFrameScore;
+                    }
+                }
+            }
+            finally
+            {
+                PrintScores();
             }
         }
 
+        private void AdjustFrameScore()
+        {
+            Frames[ActiveFrameNumber - 1] = new Frame(BonusBalls)
+            {
+                Score = ActiveFrameScore
+            };
+
+            ActiveFrameScore = 0;
+            ActiveFrameNumber++;
+            Attempts = 0;
+            BonusBalls = 0;
+        }
 
         private void AdjustAllFrames(int adjustedPins)
         {
             for (int i = 0; i < Frames.Length; i++)
             {
+                if (Frames[i] == null)
+                    break;
                 if (Frames[i] != null && Frames[i].BonusBalls > 0)
                 {
                     Frames[i].AdjustFrameScore(adjustedPins);
@@ -76,6 +107,8 @@ namespace BowlingKata
             int retValue = 0;
             for (int i = 0; i < Frames.Length; i++)
             {
+                if (Frames[i] == null)
+                    break;
                 if (Frames[i] != null)
                     retValue += Frames[i].BonusBalls;
             }
@@ -92,5 +125,23 @@ namespace BowlingKata
         {
             return Frames[frameNumber - 1].Score;
         }
+
+        public void PrintScores()
+        {
+            Debug.WriteLine("***************Scores***************");
+            for (int i = 0; i < Frames.Length; i++)
+            {
+
+                if (Frames[i] != null)
+                {
+                    Debug.WriteLine($"Frame {i + 1} : {Frames[i].Score}  Bonus Balls Left : {Frames[i].BonusBalls} Active Game Score : {ActiveGameScore}");
+                }
+
+            }
+
+            Debug.WriteLine($"Game: {ActiveGameScore}");
+
+        }
+
     }
 }

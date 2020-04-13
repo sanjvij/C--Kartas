@@ -19,7 +19,7 @@ namespace BowlingKata.Test
         public void OneRollOfBallDoesNotStartNewFrameIfAllPinsNotDownTest()
         {
             BowlingKataGame game = new BowlingKataGame();
-            game.RollBal(4);
+            game.RollBall(4);
             int actual = game.GetActiveFrameNumber();
             int expected = 1;
             Console.WriteLine(actual);
@@ -36,7 +36,7 @@ namespace BowlingKata.Test
             // third roll will be a start of next frame
 
             BowlingKataGame game = new BowlingKataGame();
-            game.RollBal(10);
+            game.RollBall(10);
             int actual = game.GetActiveFrameNumber();
             int expected = 2;
             Console.WriteLine(actual);
@@ -53,8 +53,8 @@ namespace BowlingKata.Test
             // third roll will be a start of next frame
 
             BowlingKataGame game = new BowlingKataGame();
-            game.RollBal(4);
-            game.RollBal(3);
+            game.RollBall(4);
+            game.RollBall(3);
             int actual = game.GetActiveFrameNumber();
             int expected = 2;
             Console.WriteLine(actual);
@@ -68,8 +68,8 @@ namespace BowlingKata.Test
         public void SpareGivesYouABonusBallRoll()
         {
             BowlingKataGame game = new BowlingKataGame();
-            game.RollBal(4);
-            game.RollBal(6);
+            game.RollBall(4);
+            game.RollBall(6);
             int actualFrameNumber = game.GetActiveFrameNumber();
             int expectedFrameNumber = 2;
 
@@ -89,7 +89,7 @@ namespace BowlingKata.Test
         public void StrikeGivesYouTwoBonusBalls()
         {
             BowlingKataGame game = new BowlingKataGame();
-            game.RollBal(10);
+            game.RollBall(10);
 
             int actualFrameNumber = game.GetActiveFrameNumber();
             int expectedFrameNumber = 2;
@@ -107,7 +107,7 @@ namespace BowlingKata.Test
         public void GetScorseWhenAStrike()
         {
             BowlingKataGame game = new BowlingKataGame();
-            game.RollBal(10);
+            game.RollBall(10);
 
             int actualFrameNumber = game.GetActiveFrameNumber();
             int expectedFrameNumber = 2;
@@ -130,8 +130,8 @@ namespace BowlingKata.Test
         public void GetScoresWhenASpare()
         {
             BowlingKataGame game = new BowlingKataGame();
-            game.RollBal(8);
-            game.RollBal(2);
+            game.RollBall(8);
+            game.RollBall(2);
 
             int actualFrameNumber = game.GetActiveFrameNumber();
             int expectedFrameNumber = 2;
@@ -155,14 +155,14 @@ namespace BowlingKata.Test
         {
             BowlingKataGame game = new BowlingKataGame();
 
-            game.RollBal(6);
-            game.RollBal(4);
+            game.RollBall(6);
+            game.RollBall(4);
 
             Assert.AreEqual(10, game.GetScorebyFrame(1));
 
-            game.RollBal(7);
+            game.RollBall(7);
             Assert.AreEqual(17, game.GetScorebyFrame(1));
-            game.RollBal(1);
+            game.RollBall(1);
             Assert.AreEqual(17, game.GetScorebyFrame(1));
             Assert.AreEqual(25, game.GetScorebyFrame(2));
         }
@@ -174,40 +174,69 @@ namespace BowlingKata.Test
         {
             BowlingKataGame game = new BowlingKataGame();
 
-            game.RollBal(10);
-            game.RollBal(4);
-            game.RollBal(6);
+            game.RollBall(10);
+            game.RollBall(4);
+            game.RollBall(6);
             Assert.AreEqual(30, game.GetScores());
 
         }
 
 
         [Test]
-        public void GetFrameScoreScenario3()
+        public void GetFrameScoreScenario3Game10IsStrikeAllowstwoMoreBalls()
         {
             BowlingKataGame game = new BowlingKataGame();
 
-            game.RollBal(10);
-            game.RollBal(10);
-            game.RollBal(10);
-            game.RollBal(10);
-            game.RollBal(10);
-            game.RollBal(10);
-            game.RollBal(10);
-            game.RollBal(10);
-            game.RollBal(10);
-            game.RollBal(10);
+            game.RollBall(10);
+            game.RollBall(10);
+            game.RollBall(10);
+            game.RollBall(10);
+            game.RollBall(10);
+            game.RollBall(10);
+            game.RollBall(10);
+            game.RollBall(10);
+            game.RollBall(10);
+            game.RollBall(10);
+            game.RollBall(10);
+            game.RollBall(10);
 
-            int score = game.GetScores();
 
-            int bonusBalls = game.GetRemainingBonusBalls();
-            int activeFrameNumber = game.GetActiveFrameNumber();
+            Assert.AreEqual(300, game.GetScores());
+            Assert.AreEqual(0, game.GetRemainingBonusBalls());
+            Assert.AreEqual(10, game.GetActiveFrameNumber());
 
-           // Assert.AreEqual(30, game.GetScores());
-
+            game.RollBall(10);// this ball should be ignored... 
+            Assert.AreEqual(300, game.GetScores());
+            Assert.AreEqual(0, game.GetRemainingBonusBalls());
+            Assert.AreEqual(10, game.GetActiveFrameNumber());
         }
 
 
+        [Test]
+        public void GetFrameScoreScenario3Game10IsStrikeAllowsOneMoreBalls()
+        {
+            BowlingKataGame game = new BowlingKataGame();
+
+            game.RollBall(10);
+            game.RollBall(10);
+            game.RollBall(10);
+            game.RollBall(10);
+            game.RollBall(10);
+            game.RollBall(10);
+            game.RollBall(10);
+            game.RollBall(10);
+            game.RollBall(2);//9
+            game.RollBall(8);//9
+            game.RollBall(2);
+            game.RollBall(8);
+            game.RollBall(10);
+
+            game.PrintScores();
+
+           // Assert.AreEqual(278, game.GetScores());
+            Assert.AreEqual(0, game.GetRemainingBonusBalls());
+            Assert.AreEqual(10, game.GetActiveFrameNumber());
+        }
 
 
     }

@@ -85,9 +85,10 @@ Requirement 3
 Get Scores by Frame
 Bonus balls add score to the respective frame total 
 
-
-
-
+Requirement 4
+if the 10th Frame is a strike, then allow two more roll of balls 
+If the 10th Frame is a spare, then allow one more ball
+Balls after 10 frames are ignored
 Score of the frame is the total number of pins knocked down, plus bonuses for strikes and spares
 
 
